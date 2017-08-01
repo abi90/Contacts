@@ -49,7 +49,7 @@ class ListContacts extends Component{
             onChange={(event)=>this.updateQuery(event.target.value)}
           />
         <Link
-          to='/contact'
+          to='/create'
           className='add-contact'
           >
           Add Contact

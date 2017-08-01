@@ -5,17 +5,14 @@ import CreateContact from './CreateContact'
 import * as ContactsAPI from './utils/ContactsAPI'
 
 class App extends Component {
-
   state = {
     contacts: []
   }
-
   componentDidMount() {
     ContactsAPI.getAll().then((contacts) => {
       this.setState({ contacts })
     })
   }
-
   removeContact = (contact) => {
     this.setState((state) => ({
       contacts: state.contacts.filter((c) => c.id !== contact.id)
@@ -26,13 +23,13 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Route exact path="/" render={() => (
+        <Route exact path='/' render={() => (
           <ListContacts
             onDeleteContact={this.removeContact}
             contacts={this.state.contacts}
           />
-      )}/>
-      <Route path ='/create' component={<CreateContact />}/>
+        )}/>
+      <Route exact path='/create' render={()=>(<CreateContact/>)}/>
       </div>
     )
   }
